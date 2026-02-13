@@ -1,104 +1,73 @@
-# Akkal Dhami - Portfolio Website
+# 8-Bit Portfolio Template
 
-Welcome to the personal portfolio website of **Akkal Dhami**. This project showcases my skills, projects, and professional journey as a Full Stack Developer. Built with modern web technologies, it features a clean, responsive design and interactive elements.
+Welcome to the 8-Bit Portfolio Template, a unique and retro-inspired portfolio website designed for developers who want to showcase their work with a nostalgic touch. Built with modern technologies like Next.js and Tailwind CSS, this template combines a classic 8-bit aesthetic with a fast, responsive, and fully customizable experience.
 
-## 🚀 Tech Stack
+![Portfolio](./public/images/og.png)
 
-This project is built using the latest web development tools and libraries:
+## Links
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **UI Components**: [Shadcn UI](https://ui.shadcn.com/) / [Base UI](https://www.baseui.dev/)
-- **Animations**: [Motion](https://motion.dev/)
-- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
-- **Fonts**: [Geist](https://vercel.com/font) & [Inter](https://fonts.google.com/specimen/Inter)
-- **Theming**: [Next Themes](https://github.com/pacocoursey/next-themes) (Dark/Light mode)
+[Live Link](https://8bit-portfolio-template.vercel.app/)
+[Github Link](https://github.com/akkaldhami/8bit-portfolio-template)
 
-## ✨ Features
+## Features
 
-- **Modern Design**: Clean, minimal, and responsive interface.
-- **Dark Mode Support**: Seamless transition between light and dark themes.
-- **Interactive UI**: Smooth animations and transitions powered by Motion.
-- **GitHub Integrations**: Displays GitHub contribution graph and activity.
-- **Project Showcase**: Highlighted portfolio of projects.
-- **Contact Form**: Integrated contact section.
+- **Retro 8-Bit Design**: A unique, pixelated design that stands out.
+- **Fully Responsive**: Looks great on all devices, from desktops to mobile phones.
+- **Easy to Customize**: Built with clean, well-organized code that is easy to modify and extend.
+- **Project Showcase**: A dedicated section to display your projects with images, descriptions, and links.
+- **Contact Form**: A functional contact form to allow visitors to get in touch with you.
+- **SEO Optimized**: Built with best practices for search engine optimization to help you get discovered.
 
-## 🛠️ Getting Started
+## Getting Started
+
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Make sure you have Node.js and npm installed on your machine.
 
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/), [pnpm](https://pnpm.io/), or [bun](https://bun.sh/)
+- [Node.js](https://nodejs.org/) (v20 or higher recommended)
+- [npm](https://www.npmjs.com/)
 
 ### Installation
 
-1. **Clone the repository:**
+1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/akkal-dhami.git
-   cd akkal-dhami
+   git clone https://github.com/your-username/8bit-portfolio.git
    ```
 
-2. **Install dependencies:**
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd 8bit-portfolio
+   ```
+
+3. **Install dependencies**:
 
    ```bash
    npm install
-   # or
-   yarn install
-   # or
-   pnpm install
    ```
 
-3. **Run the development server:**
+### Running the Development Server
 
-   ```bash
-   npm run dev
-   ```
+To start the development server, run the following command:
 
-4. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
-
-## 📜 Scripts
-
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the application for production.
-- `npm start`: Starts the production server.
-- `npm run lint`: Runs ESLint to identify code issues.
-- `npm run format:check`: Checks code formatting with Prettier.
-- `npm run format:fix`: Fixes code formatting with Prettier.
-- `npm run prepare`: Sets up Husky for git hooks.
-
-## 📂 Project Structure
-
-```
-akkal-dhami/
-├── app/                 # Next.js App Router pages and layouts
-├── components/          # Reusable UI components
-│   ├── layouts/         # Layout components (Navbar, Footer, etc.)
-│   ├── ui/              # Shadcn UI primitives
-│   └── ...
-├── public/              # Static assets (images, fonts, etc.)
-├── styles/              # Global styles
-├── lib/                 # Utility functions and shared logic
-├── .eslintrc.json       # ESLint configuration
-├── .prettierrc          # Prettier configuration
-├── tailwind.config.ts   # Tailwind CSS configuration
-└── tsconfig.json        # TypeScript configuration
+```bash
+npm run dev
 ```
 
-## 🤝 Contributing
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This is a personal portfolio, but suggestions and improvements are welcome!
+## Technologies Used
 
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`.
-3. Make your changes and commit them: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature/your-feature-name`.
-5. Submit a pull request.
+This project is built with the following technologies:
 
----
-
-Built with 🪓 by [Akkal Dhami](https://github.com/akkal-dhami)
+- [Next.js](https://nextjs.org/) - A React framework for building server-side rendered and static websites.
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
+- [Shadcn UI](https://ui.shadcn.com) - A set of beautifully designed components that you can copy and paste into your apps.
+- [8bitcn](https://www.8bitcn.com) - A set of 8-bit styled components and a code distribution platform.
+- [TypeScript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript.
+- [Motion](https://www.motion.dev/) - A library for creating animations in React.
+- [Resend](https://resend.com/) - A service for sending transactional emails.

@@ -114,7 +114,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Button variant="default" asChild>
             <Link
-              href={`${GITHUB_URL}/akkal-dhami`}
+              href={`${GITHUB_URL}/8bit-portfolio-template`}
               target="_blank"
               className="hidden transition-colors sm:block">
               <SiGithub className="size-5" />
