@@ -4,15 +4,15 @@ import {
   GitHubContributionFallback,
   GitHubContributionGraph
 } from "./contribution";
+import Section from "../ui/section";
 
 export async function GitHubContributions() {
   const contributions = await getGitHubContributions();
-  console.log(contributions)
   return (
-    <div className="relative py-12">
+    <Section id="github-contributions">
       <Suspense fallback={<GitHubContributionFallback />}>
         <GitHubContributionGraph initialData={contributions} />
       </Suspense>
-    </div>
+    </Section>
   );
 }

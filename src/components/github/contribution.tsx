@@ -24,8 +24,10 @@ import { LoaderIcon } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
-  TooltipTrigger, TooltipProvider
+  TooltipTrigger,
+  TooltipProvider
 } from "../ui/8bit/tooltip";
+import { PixelBorder } from "../shared/pixel-border";
 
 const YEARS = [
   { label: "Last", value: "last" },
@@ -76,7 +78,7 @@ export function GitHubContributionGraph({
       className="w-full space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
-          Github <br /> Contributions
+          Github Contributions
         </h3>
         <Select
           value={year}
@@ -96,7 +98,8 @@ export function GitHubContributionGraph({
         </Select>
       </div>
 
-      <div className="bg-secondary/10 relative min-h-[200px] border border-neutral-200 p-4 dark:border-neutral-800">
+      <div className="relative min-h-50 p-4">
+        <PixelBorder />
         {loading ? (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="border-primary h-6 w-6 animate-spin rounded-full border-2 border-t-transparent" />
