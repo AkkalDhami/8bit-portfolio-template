@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { Navbar } from "@/components/layouts/navbar";
-import { BgPattern } from "@/components/layouts/bg-pattern";
 import { Footer } from "@/components/layouts/footer";
 import { Toaster } from "@/components/ui/sonner";
 import siteConfig from "@/lib/site";
@@ -13,7 +12,6 @@ import { X_USERNAME } from "@/lib/constants";
 const geistSans = Press_Start_2P({
   weight: ["400"]
 });
-
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -70,28 +68,26 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.className} antialiased`}
-      >
+      <body className={`${geistSans.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
           <BackToTop />
-          <main className="bg-background relative mx-auto min-h-screen max-w-4xl">
-            <Navbar />
+          <Navbar />
+          <main className="max-w-screen overflow-x-hidden">
             {children}
-            <Footer />
             <BackToTop />
           </main>
-          <BgPattern />
+          <Footer />
+          {/* <BgPattern /> */}
           <Toaster />
         </ThemeProvider>
       </body>
