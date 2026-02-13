@@ -18,10 +18,8 @@ export function ThemeToggle() {
   return (
     <Button
       onClick={toggleTheme}
-      variant={'outline'}
-      className={cn(
-        "px-2 py-1.5 size-9 transition-colors duration-300",
-      )}
+      variant={"outline"}
+      className={cn("size-9 px-2 py-1.5 transition-colors duration-300")}
       aria-label="Toggle theme">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
@@ -41,8 +39,7 @@ export function ThemeToggle() {
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+              strokeLinejoin="round">
               <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
               <motion.path
                 initial={{ pathLength: 0 }}

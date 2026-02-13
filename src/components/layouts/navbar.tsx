@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
   {
     label: "Contacts",
     href: "/contacts" as Route
-  },
+  }
 ];
 
 export function Navbar() {
@@ -41,6 +41,19 @@ export function Navbar() {
 
   const pathname = usePathname();
 
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
@@ -49,14 +62,16 @@ export function Navbar() {
   if (!mounted) return null;
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 flex justify-center">
+    <header className="bg-background sticky top-0 z-50 max-w-screen overflow-x-hidden px-2 pt-2">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
-          "relative flex items-center justify-between px-4 py-2.5 transition-all duration-500",
-          "bg-background w-full max-w-4xl backdrop-blur-md"
+          "relative flex items-center justify-between px-4 py-3 transition-all duration-500",
+          "bg-background mx-auto w-full max-w-5xl backdrop-blur-md",
+          "screen-line-before border-edge flex border-x-[6px]",
+          scrollY > 0 && "screen-line-after"
         )}>
         <Profile />
 
@@ -88,9 +103,7 @@ export function Navbar() {
                       type: "spring",
                       bounce: 0.25,
                       duration: 0.5
-                    }}>
-
-                  </motion.div>
+                    }}></motion.div>
                 )}
               </Link>
             );
@@ -99,12 +112,11 @@ export function Navbar() {
 
         {/* Desktop Controls */}
         <div className="flex items-center gap-3">
-          {/* <SearchCommand /> */}
-          <Button
-            variant="default"
-            asChild
-            className="hidden sm:block transition-colors">
-            <Link href={`${GITHUB_URL}/akkal-dhami`}>
+          <Button variant="default" asChild>
+            <Link
+              href={`${GITHUB_URL}/akkal-dhami`}
+              target="_blank"
+              className="hidden transition-colors sm:block">
               <SiGithub className="size-5" />
             </Link>
           </Button>
@@ -116,80 +128,76 @@ export function Navbar() {
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </Button>
         </div>
+      </motion.nav>
 
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setMobileMenuOpen(false)}
-                className="bg-background/60 fixed inset-0 z-40 h-screen backdrop-blur-sm md:hidden"
-              />
-              <motion.div
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="bg-background border-border fixed top-0 right-0 bottom-0 z-50 h-screen w-[280px] overflow-y-auto border-l md:hidden">
-                <div className="flex h-full flex-col p-6">
-                  <div className="mb-8 flex items-center justify-between">
-                    <span className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
-                      Menu
-                    </span>
-                    <Button
-                      variant={'secondary'}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="group bg-muted hover:bg-secondary relative cursor-pointer p-2 transition-colors">
-                      <X size={16} />
-                      <span className="sr-only">Close menu</span>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="bg-background/60 fixed inset-0 z-40 h-screen backdrop-blur-sm md:hidden"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="bg-background border-border fixed top-0 right-0 bottom-0 z-50 h-screen w-70 overflow-y-auto border-l md:hidden">
+              <div className="flex h-full flex-col p-6">
+                <div className="mb-8 flex items-center justify-between">
+                  <span className="text-muted-foreground text-xs font-medium tracking-[0.2em] uppercase">
+                    Menu
+                  </span>
+                  <Button
+                    variant={"secondary"}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="group bg-muted hover:bg-secondary relative cursor-pointer p-2 transition-colors">
+                    <X size={16} />
+                    <span className="sr-only">Close menu</span>
+                  </Button>
+                </div>
 
-                    </Button>
-                  </div>
-
-                  <div className="flex flex-col space-y-4">
-                    {[{ label: "Home", href: "/" }, ...menuItems].map(item => {
-                      const isActive = isActiveLink(pathname, item.href);
-                      return (
-                        <Link
-                          key={item.label}
-                          href={item.href as Route}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={cn(
-                            "group relative flex cursor-pointer items-center gap-4 px-4 py-2.5 transition-all duration-200",
-                            isActive
-                              ? "bg-secondary/50 text-primary"
-                              : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
-                          )}>
-                          <span className="text-xl font-semibold tracking-widest uppercase">
-                            {item.label}
-                          </span>
-
-                        </Link>
-                      );
-                    })}
-                  </div>
-
-                  <div className="border-border/50 mt-auto border-t pt-8">
-                    <div className="flex items-center gap-3">
-                      <Profile />
-                      <div className="flex flex-col space-y-1.5">
-                        <span className="text-sm tracking-tight">
-                          {NAME}
+                <div className="flex flex-col space-y-4">
+                  {[{ label: "Home", href: "/" }, ...menuItems].map(item => {
+                    const isActive = isActiveLink(pathname, item.href);
+                    return (
+                      <Link
+                        key={item.label}
+                        href={item.href as Route}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={cn(
+                          "group relative flex cursor-pointer items-center gap-4 px-4 py-2.5 transition-all duration-200",
+                          isActive
+                            ? "bg-secondary/50 text-primary"
+                            : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
+                        )}>
+                        <span className="text-xl font-semibold tracking-widest uppercase">
+                          {item.label}
                         </span>
-                        <span className="text-muted-foreground text-[10px] uppercase">
-                          Full Stack Developer
-                        </span>
-                      </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                <div className="border-border/50 mt-auto border-t pt-8">
+                  <div className="flex items-center gap-3">
+                    <Profile />
+                    <div className="flex flex-col space-y-1.5">
+                      <span className="text-sm tracking-tight">{NAME}</span>
+                      <span className="text-muted-foreground text-[10px] uppercase">
+                        Full Stack Developer
+                      </span>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

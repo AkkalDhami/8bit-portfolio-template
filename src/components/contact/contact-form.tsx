@@ -58,11 +58,16 @@ export function ContactForm() {
           if (data.error && typeof data.error === "object") {
             setErrors(data.error);
           }
-          toast(`${typeof data.error === "string" ? data.error
-            : "Failed to send message."}`)
+          toast(
+            `${
+              typeof data.error === "string"
+                ? data.error
+                : "Failed to send message."
+            }`
+          );
         }
       } catch {
-        toast("Something went wrong. Please try again.")
+        toast("Something went wrong. Please try again.");
       }
     });
   };

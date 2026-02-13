@@ -4,6 +4,7 @@ import { SubHeading } from "@/components/ui/sub-heading";
 import { EMAIL } from "@/lib/constants";
 import { Button } from "../ui/8bit/button";
 import Link from "next/link";
+import { PixelBorder } from "../shared/pixel-border";
 
 export function ContactCta() {
   return (
@@ -13,7 +14,8 @@ export function ContactCta() {
       transition={{ duration: 0.6, delay: 0.4 }}
       viewport={{ once: true }}
       className="relative text-center">
-      <div className="border p-8 md:p-12">
+      <div className="group relative p-8 md:p-12">
+        <PixelBorder />
         <Heading className="mb-4 text-xl font-bold md:text-2xl">
           Ready to Start Your Project?
         </Heading>
@@ -24,8 +26,11 @@ export function ContactCta() {
           them to life.
         </SubHeading>
         <div className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
-          <Button asChild >
-            <Link href={`mailto:${EMAIL}`} className="py-3">   Send Email</Link>
+          <Button asChild>
+            <Link href={`mailto:${EMAIL}`} className="py-3">
+              {" "}
+              Send Email
+            </Link>
           </Button>
         </div>
       </div>
