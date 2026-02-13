@@ -5,6 +5,7 @@ import { Heading } from "@/components/ui/heading";
 import { SubHeading } from "@/components/ui/sub-heading";
 import { PROJECTS } from "@/data/projects";
 import { ProjectCard } from "@/components/projects/project-card";
+import Section from "../ui/section";
 
 const fadeInUp = {
   initial: { y: 40, opacity: 0 },
@@ -28,7 +29,7 @@ export const formatDate = (dateString: string) => {
 
 export function ProjectsSection({ details = false }: { details?: boolean }) {
   return (
-    <section id="projects" className="min-h-screen py-12">
+    <Section id="projects">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +55,6 @@ export function ProjectsSection({ details = false }: { details?: boolean }) {
           </motion.div>
         ))}
       </motion.div>
-
-    </section>
+    </Section>
   );
 }

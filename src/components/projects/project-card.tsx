@@ -1,5 +1,4 @@
 "use client";
-import { Card, CardContent } from "@/components/ui/8bit/card";
 import { Check, LinkIcon } from "lucide-react";
 import type { Tech } from "@/components/projects/tech-badge";
 import type { Project } from "@/data/projects";
@@ -23,6 +22,7 @@ import {
   TooltipTrigger
 } from "../ui/8bit/tooltip";
 import { Button } from "../ui/8bit/button";
+import { PixelBorder } from "../shared/pixel-border";
 
 export function ProjectCard({
   project,
@@ -33,7 +33,8 @@ export function ProjectCard({
 }) {
   if (!details) {
     return (
-      <motion.div className="group relative border border-neutral-500/40 p-4 transition-all">
+      <motion.div className="group relative p-4 transition-all">
+        <PixelBorder />
         <div className="flex flex-col gap-6 md:flex-row">
           <Link
             href={`/projects/${project.slug}`}
@@ -55,17 +56,15 @@ export function ProjectCard({
                 {project.description}
               </p>
 
-              <div className="flex mt-4 flex-wrap gap-4">
-                {project.technologies.map((tech) => {
+              <div className="mt-4 flex flex-wrap gap-4">
+                {project.technologies.map(tech => {
                   const Icon =
                     TECH_ICONS[tech.name.toUpperCase() as TechStack] ||
                     TECH_ICONS["DEFAULT"];
                   return (
                     <TooltipProvider key={tech.name}>
                       <Tooltip>
-                        <TooltipTrigger
-                          asChild
-                        >
+                        <TooltipTrigger asChild>
                           <Icon className="size-6" />
                         </TooltipTrigger>
                         <TooltipContent>
@@ -73,13 +72,11 @@ export function ProjectCard({
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
-
                   );
                 })}
-
               </div>
 
-              <div className="mt-4 items-center flex-wrap gap-6 flex justify-end">
+              <div className="mt-4 flex flex-wrap items-center justify-end gap-6">
                 <ProjectLinks project={project} />
               </div>
             </div>
@@ -94,9 +91,9 @@ export function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="h-full">
-      <Card className="h-full gap-3 overflow-hidden border-transparent dark:bg-transparent">
-        <div className="relative mb-1 aspect-video">
+      className="h-full p-4">
+      <div className="h-full gap-3">
+        <div className="relative aspect-video">
           <DetailSwapCard
             data={{
               images: project.images
@@ -109,7 +106,7 @@ export function ProjectCard({
           />
         </div>
 
-        <CardContent className="space-y-6 border-0 p-4">
+        <div className="space-y-6 border-0">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -181,7 +178,7 @@ export function ProjectCard({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="flex flex-wrap gap-2">
+              className="flex flex-wrap gap-6">
               {project.technologies.map((tech: Tech, idx: number) => {
                 const Icon =
                   TECH_ICONS[tech.name.toUpperCase() as TechStack] ||
@@ -221,8 +218,8 @@ export function ProjectCard({
               <ProjectLinks project={project} details />
             </motion.div>
           </motion.div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -240,14 +237,14 @@ export function ProjectLinks({
         {project.liveUrl && (
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger
-                asChild
-              ><Link
-                href={project.liveUrl as Route}
-                target="_blank"
-                title="Live Demo">
+              <TooltipTrigger asChild>
+                <Link
+                  href={project.liveUrl as Route}
+                  target="_blank"
+                  title="Live Demo">
                   <LinkIcon className="size-6" />
-                </Link></TooltipTrigger>
+                </Link>
+              </TooltipTrigger>
               <TooltipContent>
                 <p>Live Demo</p>
               </TooltipContent>
@@ -257,12 +254,11 @@ export function ProjectLinks({
         {project.githubUrl && (
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger
-                asChild
-              ><Link
-                href={project.githubUrl as Route}
-                target="_blank"
-                title="Source Code">
+              <TooltipTrigger asChild>
+                <Link
+                  href={project.githubUrl as Route}
+                  target="_blank"
+                  title="Source Code">
                   <SiGithub className="size-6" />
                 </Link>
               </TooltipTrigger>
@@ -274,12 +270,8 @@ export function ProjectLinks({
         )}
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger
-              asChild
-            >
-              <Link
-                href={`/projects/${project.slug}`}
-                title="Project Details">
+            <TooltipTrigger asChild>
+              <Link href={`/projects/${project.slug}`} title="Project Details">
                 <ArrowUpRight className="size-6" />
               </Link>
             </TooltipTrigger>
@@ -303,10 +295,7 @@ export function ProjectLinks({
         <Button
           asChild
           className="group hover:shadow-primary relative py-2 font-normal">
-          <Link
-            href={project.liveUrl as Route}
-            target="_blank"
-          >
+          <Link href={project.liveUrl as Route} target="_blank">
             Live Demo
           </Link>
         </Button>
@@ -316,13 +305,8 @@ export function ProjectLinks({
         <Button
           asChild
           className="group hover:shadow-primary relative py-2 font-normal">
-          <Link
-            href={project.githubUrl as Route}
-          >
-            Source Code
-          </Link>
+          <Link href={project.githubUrl as Route}>Source Code</Link>
         </Button>
-
       )}
     </motion.div>
   );

@@ -75,7 +75,7 @@ const DetailSwapCard = React.forwardRef<HTMLDivElement, DetailSwapCardProps>(
     return (
       <div
         ref={ref}
-        className={cn("w-full space-y-2 p-4", className)}
+        className={cn("w-full space-y-2", className)}
         {...rest}>
         {/* Main image display */}
         <div
@@ -179,7 +179,7 @@ const DetailSwapCard = React.forwardRef<HTMLDivElement, DetailSwapCardProps>(
                   key={index}
                   onClick={() => handleImageChange(index)}
                   className={cn(
-                    "relative aspect-video w-26 shrink-0 overflow-hidden border p-2 transition-all duration-200",
+                    "relative aspect-video w-26 shrink-0 overflow-hidden border transition-all duration-200",
                     activeIndex === index
                       ? "ring-1 ring-neutral-500 ring-offset-1 dark:ring-neutral-400"
                       : "border border-neutral-500/50"
