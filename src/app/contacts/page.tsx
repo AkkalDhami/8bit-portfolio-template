@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ContactSection } from "@/components/contact/contact-section";
+import { Gap } from "@/components/home/gap";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -9,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="mt-8 px-3">
+    <div className="relative mx-auto max-w-5xl *:[[id]]:scroll-mt-22">
       <ContactSection />
+      <Gap />
     </div>
   );
 }

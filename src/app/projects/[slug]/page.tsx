@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { Route } from "next";
 import { Button } from "@/components/ui/8bit/button";
 import Link from "next/link";
+import { Gap } from "@/components/home/gap";
 
 export async function generateMetadata(
   props: PageProps<"/projects/[slug]">
@@ -54,35 +55,39 @@ export default async function Page(props: PageProps<"/projects/[slug]">) {
     slug as string
   );
   return (
-    <div className="pt-16">
-      <div className="p-4">
-        <BackButton />
+    <>
+      <div className="group screen-line-after screen-line-before relative mx-auto max-w-5xl border-x-[6px] *:[[id]]:scroll-mt-22">
+        <div className="p-4">
+          <BackButton />
+        </div>
+        <ProjectCard project={project} details={true} />
+        <div className="flex justify-between p-4">
+          {previousProject && (
+            <Button
+              variant="secondary"
+              className="group px-4 py-2 font-medium tracking-normal capitalize"
+              asChild>
+              <Link
+                href={`/projects/${previousProject.slug}` as Route}
+                className="flex items-center gap-1">
+                <ChevronLeft className="size-5" /> Previous Project
+              </Link>
+            </Button>
+          )}
+          {nextProject && (
+            <Button
+              variant="secondary"
+              className="group px-4 py-2 font-medium tracking-normal capitalize">
+              <Link
+                href={`/projects/${nextProject.slug}` as Route}
+                className="flex items-center gap-1">
+                Next Project <ChevronRight className="size-5" />
+              </Link>
+            </Button>
+          )}
+        </div>
       </div>
-      <ProjectCard project={project} details={true} />
-      <div className="flex justify-between p-4">
-        {previousProject && (
-          <Button
-            variant="secondary"
-            className="group px-4 py-2 font-medium tracking-normal capitalize"
-            asChild
-          >
-            <Link href={`/projects/${previousProject.slug}` as Route} className="flex items-center gap-1">
-              <ChevronLeft className="size-5" /> Previous Project
-            </Link>
-
-          </Button>
-        )}
-        {nextProject && (
-          <Button
-            variant="secondary"
-            className="group px-4 py-2 font-medium tracking-normal capitalize"
-          >
-            <Link href={`/projects/${nextProject.slug}` as Route} className="flex items-center gap-1">
-              Next Project <ChevronRight className="size-5" />
-            </Link>
-          </Button>
-        )}
-      </div>
-    </div>
+      <Gap />
+    </>
   );
 }
