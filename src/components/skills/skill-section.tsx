@@ -10,6 +10,7 @@ import {
   TOOLS_STACKS
 } from "@/utils/stack";
 import { SkillCategoryCard } from "./skill-category";
+import Section from "../ui/section";
 
 const stagger = {
   animate: {
@@ -44,7 +45,7 @@ const skills = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="relative py-12">
+    <Section id="skills">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -68,6 +69,6 @@ export function SkillsSection() {
           <SkillCategoryCard key={index} {...skill} />
         ))}
       </motion.div>
-    </section>
+    </Section>
   );
 }
