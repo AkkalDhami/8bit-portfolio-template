@@ -40,10 +40,9 @@ export function BackToTop() {
             variant="secondary"
             size="default"
             onClick={scrollToTop}
-            className="border-border/50 hover:bg-muted bg-muted rounded-none border backdrop-blur-md p-2 transition-all"
+            className="border-border/50 hover:bg-muted bg-muted rounded-none border p-2 backdrop-blur-md transition-all"
             aria-label="Back to top">
             <ArrowUp className="size-5" />
-
           </Button>
         </motion.div>
       )}

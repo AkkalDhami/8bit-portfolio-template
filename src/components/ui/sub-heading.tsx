@@ -14,7 +14,7 @@ export function SubHeading({
   return (
     <Tag
       className={cn(
-        "text-muted-foreground font-normal mx-auto max-w-3xl text-base",
+        "text-muted-foreground mx-auto max-w-3xl text-base font-normal",
         className
       )}>
       {children}

@@ -8,22 +8,23 @@ export const badgeVariants = cva("", {
   variants: {
     font: {
       normal: "",
-      retro: "retro",
+      retro: "retro"
     },
     variant: {
       default: "border-primary bg-primary",
       destructive: "border-destructive bg-destructive",
       outline: "border-background bg-background",
-      secondary: "border-secondary bg-secondary",
-    },
+      secondary: "border-secondary bg-secondary"
+    }
   },
   defaultVariants: {
-    variant: "default",
-  },
+    variant: "default"
+  }
 });
 
 export interface BitButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof badgeVariants> {
   asChild?: boolean;
 }
@@ -41,7 +42,7 @@ function Badge({
 
   // visual classes for badge and sidebars
   const visualClasses = classes.filter(
-    (c) =>
+    c =>
       c.startsWith("bg-") ||
       c.startsWith("border-") ||
       c.startsWith("text-") ||
@@ -50,7 +51,7 @@ function Badge({
 
   // Container should accept all non-visual utility classes (e.g., size, spacing, layout)
   const containerClasses = classes.filter(
-    (c) =>
+    c =>
       !(
         c.startsWith("bg-") ||
         c.startsWith("border-") ||
@@ -70,15 +71,14 @@ function Badge({
           font !== "normal" && "retro",
           visualClasses
         )}
-        variant={variant}
-      >
+        variant={variant}>
         {children}
       </ShadcnBadge>
 
       {/* Left pixel bar */}
       <div
         className={cn(
-          "-left-1.5 absolute inset-y-[4px] w-1.5",
+          "absolute inset-y-[4px] -left-1.5 w-1.5",
           color,
           visualClasses
         )}
@@ -86,7 +86,7 @@ function Badge({
       {/* Right pixel bar */}
       <div
         className={cn(
-          "-right-1.5 absolute inset-y-[4px] w-1.5",
+          "absolute inset-y-[4px] -right-1.5 w-1.5",
           color,
           visualClasses
         )}

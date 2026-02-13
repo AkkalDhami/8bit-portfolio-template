@@ -15,16 +15,17 @@ export const inputVariants = cva("", {
   variants: {
     font: {
       normal: "",
-      retro: "retro",
-    },
+      retro: "retro"
+    }
   },
   defaultVariants: {
-    font: "retro",
-  },
+    font: "retro"
+  }
 });
 
 interface BitLabelProps
-  extends React.ComponentProps<typeof LabelPrimitive.Root>,
+  extends
+    React.ComponentProps<typeof LabelPrimitive.Root>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
 }

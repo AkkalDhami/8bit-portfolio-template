@@ -13,14 +13,14 @@ import {
   CommandItem as ShadcnCommandItem,
   CommandList as ShadcnCommandList,
   CommandSeparator as ShadcnCommandSeparator,
-  CommandShortcut as ShadcnCommandShortcut,
+  CommandShortcut as ShadcnCommandShortcut
 } from "@/components/ui/command";
 import {
   type Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle
 } from "@/components/ui/dialog";
 
 import "@/components/ui/8bit/styles/retro.css";
@@ -41,18 +41,18 @@ function Command({
         {...props}
       />
 
-      <div className="absolute -top-1.5 w-1/2 left-1.5 h-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute -top-1.5 w-1/2 right-1.5 h-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute -bottom-1.5 w-1/2 left-1.5 h-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute -bottom-1.5 w-1/2 right-1.5 h-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute top-0 left-0 size-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute top-0 right-0 size-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute bottom-0 left-0 size-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute bottom-0 right-0 size-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute top-1.5 -left-1.5 h-1/2 w-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute top-1.5 -right-1.5 h-1/2 w-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute bottom-1.5 -left-1.5 h-1/2 w-1.5 bg-foreground dark:bg-ring" />
-      <div className="absolute bottom-1.5 -right-1.5 h-1/2 w-1.5 bg-foreground dark:bg-ring" />
+      <div className="bg-foreground dark:bg-ring absolute -top-1.5 left-1.5 h-1.5 w-1/2" />
+      <div className="bg-foreground dark:bg-ring absolute -top-1.5 right-1.5 h-1.5 w-1/2" />
+      <div className="bg-foreground dark:bg-ring absolute -bottom-1.5 left-1.5 h-1.5 w-1/2" />
+      <div className="bg-foreground dark:bg-ring absolute right-1.5 -bottom-1.5 h-1.5 w-1/2" />
+      <div className="bg-foreground dark:bg-ring absolute top-0 left-0 size-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute top-0 right-0 size-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute bottom-0 left-0 size-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute right-0 bottom-0 size-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute top-1.5 -left-1.5 h-1/2 w-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute top-1.5 -right-1.5 h-1/2 w-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute bottom-1.5 -left-1.5 h-1/2 w-1.5" />
+      <div className="bg-foreground dark:bg-ring absolute -right-1.5 bottom-1.5 h-1/2 w-1.5" />
     </div>
   );
 }
@@ -88,8 +88,7 @@ function CommandInput({
   return (
     <div
       data-slot="command-input-wrapper"
-      className="flex h-10 items-center gap-2 border-b px-3"
-    >
+      className="flex h-10 items-center gap-2 border-b px-3">
       <svg
         width="30"
         height="30"
@@ -98,8 +97,7 @@ function CommandInput({
         xmlns="http://www.w3.org/2000/svg"
         stroke="currentColor"
         strokeWidth="0.25"
-        aria-label="search"
-      >
+        aria-label="search">
         <rect x="88" y="56" width="14" height="14" rx="1"></rect>
         <rect x="72" y="72" width="14" height="14" rx="1"></rect>
         <rect x="56" y="88" width="14" height="14" rx="1"></rect>
@@ -186,12 +184,11 @@ function CommandSeparator({
     <ShadcnCommandSeparator
       data-slot="command-separator"
       className={cn(
-        "data-[orientation=horizontal]:bg-[length:16px_8px] data-[orientation=horizontal]:bg-[linear-gradient(90deg,var(--foreground)_75%,transparent_75%)] dark:data-[orientation=horizontal]:bg-[linear-gradient(90deg,var(--ring)_75%,transparent_75%)] shrink-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:bg-[length:2px_16px] data-[orientation=vertical]:bg-[linear-gradient(0deg,var(--foreground)_75%,transparent_75%)] dark:data-[orientation=vertical]:bg-[linear-gradient(0deg,var(--ring)_75%,transparent_75%)]",
+        "shrink-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-full data-[orientation=horizontal]:bg-[linear-gradient(90deg,var(--foreground)_75%,transparent_75%)] data-[orientation=horizontal]:bg-[length:16px_8px] data-[orientation=vertical]:h-full data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:bg-[linear-gradient(0deg,var(--foreground)_75%,transparent_75%)] data-[orientation=vertical]:bg-[length:2px_16px] dark:data-[orientation=horizontal]:bg-[linear-gradient(90deg,var(--ring)_75%,transparent_75%)] dark:data-[orientation=vertical]:bg-[linear-gradient(0deg,var(--ring)_75%,transparent_75%)]",
         "retro",
         className
       )}
-      {...props}
-    >
+      {...props}>
       <Separator />
     </ShadcnCommandSeparator>
   );
@@ -205,7 +202,7 @@ function CommandItem({
     <ShadcnCommandItem
       data-slot="command-item"
       className={cn(
-        "rounded-none border-dashed border-y-3 border-ring/0 hover:border-foreground dark:hover:border-ring",
+        "border-ring/0 hover:border-foreground dark:hover:border-ring rounded-none border-y-3 border-dashed",
         className
       )}
       {...props}
@@ -231,5 +228,5 @@ export {
   CommandGroup,
   CommandItem,
   CommandShortcut,
-  CommandSeparator,
+  CommandSeparator
 };

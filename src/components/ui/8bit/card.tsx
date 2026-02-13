@@ -9,7 +9,7 @@ import {
   CardDescription as ShadcnCardDescription,
   CardFooter as ShadcnCardFooter,
   CardHeader as ShadcnCardHeader,
-  CardTitle as ShadcnCardTitle,
+  CardTitle as ShadcnCardTitle
 } from "@/components/ui/card";
 
 import "@/components/ui/8bit/styles/retro.css";
@@ -18,17 +18,16 @@ export const cardVariants = cva("", {
   variants: {
     font: {
       normal: "",
-      retro: "retro",
-    },
+      retro: "retro"
+    }
   },
   defaultVariants: {
-    font: "retro",
-  },
+    font: "retro"
+  }
 });
 
 export interface BitCardProps
-  extends React.ComponentProps<"div">,
-    VariantProps<typeof cardVariants> {
+  extends React.ComponentProps<"div">, VariantProps<typeof cardVariants> {
   asChild?: boolean;
 }
 
@@ -38,21 +37,20 @@ function Card({ ...props }: BitCardProps) {
   return (
     <div
       className={cn(
-        "relative border-y-6 border-foreground dark:border-ring !p-0",
+        "border-foreground dark:border-ring relative border-y-6 !p-0",
         className
-      )}
-    >
+      )}>
       <ShadcnCard
         {...props}
         className={cn(
-          "rounded-none border-0 !w-full",
+          "!w-full rounded-none border-0",
           font !== "normal" && "retro",
           className
         )}
       />
 
       <div
-        className="absolute inset-0 border-x-6 -mx-1.5 border-foreground dark:border-ring pointer-events-none"
+        className="border-foreground dark:border-ring pointer-events-none absolute inset-0 -mx-1.5 border-x-6"
         aria-hidden="true"
       />
     </div>
@@ -133,5 +131,5 @@ export {
   CardTitle,
   CardAction,
   CardDescription,
-  CardContent,
+  CardContent
 };

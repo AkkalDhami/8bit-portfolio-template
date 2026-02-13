@@ -27,11 +27,10 @@ const Spinner = React.forwardRef<SVGSVGElement, SpinnerProps>(
             xmlns="http://www.w3.org/2000/svg"
             stroke="currentColor"
             strokeWidth="0.25"
-            className={cn("animate-spin size-5", className)}
+            className={cn("size-5 animate-spin", className)}
             role="status"
             aria-label="Loading"
-            {...(props as React.ComponentProps<"svg">)}
-          >
+            {...(props as React.ComponentProps<"svg">)}>
             <rect x="200" y="80" width="14" height="14" rx="1"></rect>
             <rect x="200" y="96" width="14" height="14" rx="1"></rect>
             <rect x="184" y="96" width="14" height="14" rx="1"></rect>
@@ -81,8 +80,7 @@ const Spinner = React.forwardRef<SVGSVGElement, SpinnerProps>(
             className={cn("size-4", className)}
             role="status"
             aria-label="Loading"
-            {...(props as React.ComponentProps<"svg">)}
-          >
+            {...(props as React.ComponentProps<"svg">)}>
             <style
               dangerouslySetInnerHTML={{
                 __html: `
@@ -99,7 +97,7 @@ const Spinner = React.forwardRef<SVGSVGElement, SpinnerProps>(
                 .pixel-6 { animation: spin-pixel 0.8s ease-in-out 0.5s infinite; }
                 .pixel-7 { animation: spin-pixel 0.8s ease-in-out 0.6s infinite; }
                 .pixel-8 { animation: spin-pixel 0.8s ease-in-out 0.7s infinite; }
-              `,
+              `
               }}
             />
             {/* Top */}

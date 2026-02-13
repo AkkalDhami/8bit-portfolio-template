@@ -456,12 +456,15 @@ export const ContributionGraphTotalCount = ({
 
   return (
     <div
-      className={cn("text-muted-foreground flex-wrap text-xs sm:text-sm flex items-center gap-1", className)}
+      className={cn(
+        "text-muted-foreground flex flex-wrap items-center gap-1 text-xs sm:text-sm",
+        className
+      )}
       {...props}>
       {labels.totalCount
         ? labels.totalCount
-          .replace("{{count}}", String(totalCount.toLocaleString("en")))
-          .replace("{{year}}", String(year))
+            .replace("{{count}}", String(totalCount.toLocaleString("en")))
+            .replace("{{year}}", String(year))
         : `${totalCount.toLocaleString("en")} contributions in ${year}`}
       <span className="text-muted-foreground">on</span>
       <Link

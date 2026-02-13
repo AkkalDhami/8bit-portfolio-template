@@ -13,7 +13,7 @@ import {
   SelectScrollUpButton as ShadcnSelectScrollUpButton,
   SelectSeparator as ShadcnSelectSeparator,
   SelectTrigger as ShadcnSelectTrigger,
-  SelectValue as ShadcnSelectValue,
+  SelectValue as ShadcnSelectValue
 } from "@/components/ui/select";
 
 import "@/components/ui/8bit/styles/retro.css";
@@ -22,16 +22,17 @@ export const inputVariants = cva("", {
   variants: {
     font: {
       normal: "",
-      retro: "retro",
-    },
+      retro: "retro"
+    }
   },
   defaultVariants: {
-    font: "retro",
-  },
+    font: "retro"
+  }
 });
 
 export interface BitSelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement>,
+  extends
+    React.SelectHTMLAttributes<HTMLSelectElement>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
 }
@@ -47,7 +48,8 @@ function SelectGroup({
 }
 
 interface BitSelectValueProps
-  extends React.ComponentProps<typeof SelectPrimitive.Value>,
+  extends
+    React.ComponentProps<typeof SelectPrimitive.Value>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
 }
@@ -64,7 +66,8 @@ function SelectValue({ ...props }: BitSelectValueProps) {
 }
 
 interface BitSelectTriggerProps
-  extends React.ComponentProps<typeof SelectPrimitive.Trigger>,
+  extends
+    React.ComponentProps<typeof SelectPrimitive.Trigger>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
 }
@@ -75,20 +78,18 @@ function SelectTrigger({ children, ...props }: BitSelectTriggerProps) {
   return (
     <div
       className={cn(
-        "relative border-y-6 border-foreground dark:border-ring",
+        "border-foreground dark:border-ring relative border-y-6",
         className,
         font !== "normal" && "retro"
-      )}
-    >
+      )}>
       <ShadcnSelectTrigger
         {...props}
-        className={cn("rounded-none ring-0 w-full border-0", className)}
-      >
+        className={cn("w-full rounded-none border-0 ring-0", className)}>
         {children}
       </ShadcnSelectTrigger>
 
       <div
-        className="absolute inset-0 border-x-6 -mx-1.5 border-foreground dark:border-ring pointer-events-none"
+        className="border-foreground dark:border-ring pointer-events-none absolute inset-0 -mx-1.5 border-x-6"
         aria-hidden="true"
       />
     </div>
@@ -96,7 +97,8 @@ function SelectTrigger({ children, ...props }: BitSelectTriggerProps) {
 }
 
 export interface BitSelectContentProps
-  extends React.ComponentProps<typeof SelectPrimitive.Content>,
+  extends
+    React.ComponentProps<typeof SelectPrimitive.Content>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
 }
@@ -113,10 +115,9 @@ function SelectContent({
       className={cn(
         font !== "normal" && "retro",
         className,
-        "relative rounded-none border-4 border-foreground dark:border-ring -ml-1 mt-1"
+        "border-foreground dark:border-ring relative mt-1 -ml-1 rounded-none border-4"
       )}
-      {...props}
-    >
+      {...props}>
       {children}
     </ShadcnSelectContent>
   );
@@ -138,10 +139,9 @@ function SelectItem({
     <ShadcnSelectItem
       className={cn(
         className,
-        "rounded-none border-y-3 border-dashed border-ring/0 hover:border-foreground dark:hover:border-ring"
+        "border-ring/0 hover:border-foreground dark:hover:border-ring rounded-none border-y-3"
       )}
-      {...props}
-    >
+      {...props}>
       {children}
     </ShadcnSelectItem>
   );
@@ -178,5 +178,5 @@ export {
   SelectScrollUpButton,
   SelectSeparator,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 };

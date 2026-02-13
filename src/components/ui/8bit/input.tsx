@@ -10,16 +10,17 @@ export const inputVariants = cva("", {
   variants: {
     font: {
       normal: "",
-      retro: "retro",
-    },
+      retro: "retro"
+    }
   },
   defaultVariants: {
-    font: "retro",
-  },
+    font: "retro"
+  }
 });
 
 export interface BitInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends
+    React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
 }
@@ -30,21 +31,20 @@ function Input({ ...props }: BitInputProps) {
   return (
     <div
       className={cn(
-        "relative border-y-6 border-foreground dark:border-ring !p-0 flex items-center",
+        "border-foreground dark:border-ring relative flex items-center border-y-6 !p-0",
         className
-      )}
-    >
+      )}>
       <ShadcnInput
         {...props}
         className={cn(
-          "rounded-none ring-0 !w-full",
+          "!w-full rounded-none ring-0",
           font !== "normal" && "retro",
           className
         )}
       />
 
       <div
-        className="absolute inset-0 border-x-6 -mx-1.5 border-foreground dark:border-ring pointer-events-none"
+        className="border-foreground dark:border-ring pointer-events-none absolute inset-0 -mx-1.5 border-x-6"
         aria-hidden="true"
       />
     </div>
