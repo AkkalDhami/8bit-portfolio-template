@@ -15,7 +15,7 @@ export function SetupList() {
             transition={{ duration: 0.05, delay: categoryIndex * 0.05 }}
             viewport={{ once: true }}
             className="flex items-center gap-3">
-            <div className="bg-muted text-primary flex size-10 items-center justify-center">
+            <div className="bg-muted text-primary flex size-10 items-center justify-center rounded-lg">
               <category.icon className="size-5" />
             </div>
             <h2 className="text-muted-primary text-2xl font-medium tracking-tight">

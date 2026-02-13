@@ -6,6 +6,7 @@ import { SetupItem } from "@/data/setup";
 import Image from "next/image";
 import Link from "next/link";
 import { Route } from "next";
+import { PixelBorder } from "../shared/pixel-border";
 
 export function SetupCard({ item, index }: { item: SetupItem; index: number }) {
   return (
@@ -14,7 +15,8 @@ export function SetupCard({ item, index }: { item: SetupItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group border-border/50 bg-card hover:border-foreground/20 relative flex flex-col justify-between border p-3">
+      className="group bg-card relative flex flex-col justify-between border p-3">
+      <PixelBorder />
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           {item.image && (
