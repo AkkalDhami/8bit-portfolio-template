@@ -2,7 +2,6 @@
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
-
 @theme inline {
   --color-card-hover: var(--color-card-hover);
   --color-background: var(--background);
@@ -25,6 +24,7 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-edge: var(--edge);
   --color-border-hover: var(--border-hover);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -81,6 +81,7 @@
   --secondary: #ebebeb;
   --secondary-foreground: #000000;
   --muted: #f5f5f5;
+  --edge: color-mix(in oklab, var(--border) 64%, var(--background));
   --muted-foreground: #525252;
   --muted-primary: #525252;
   --muted-tertiary: var(--color-neutral-300);
@@ -156,6 +157,7 @@
   --destructive: #ff5b5b;
   --destructive-foreground: #000000;
   --border: #242424;
+  --edge: #242424;
   --border-hover: var(--color-neutral-600);
   --input: #333333;
   --ring: #a4a4a4;
@@ -227,7 +229,7 @@
     @apply from-background to-card bg-linear-to-t;
   }
   .primary-border {
-    @apply border-dashed border-neutral-400 duration-300 hover:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300;
+    @apply border-neutral-400 duration-300 hover:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300;
   }
   .primary-hover {
     @apply duration-300 hover:border-neutral-500 dark:hover:border-neutral-400;
@@ -237,10 +239,30 @@
   }
 }
 
+@utility screen-line-before {
+  @apply before:bg-edge relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-1.5 before:w-[200vw];
+}
+
+@utility hor-before {
+  @apply before:absolute before:h-full before:w-12 before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56;
+}
+
+@utility hor-after {
+  @apply after:absolute after:h-full after:w-12 after:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] after:bg-size-[10px_10px] after:[--pattern-foreground:var(--color-edge)]/56;
+}
+
+@utility screen-line-after {
+  @apply after:bg-edge relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-1.5 after:w-[200vw];
+}
+
 .thin-scrollbar {
   scrollbar-width: thin;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+[id] {
+  @apply scroll-mt-18;
 }
