@@ -9,7 +9,7 @@ export default function Section({
     <section
       {...props}
       className={cn(
-        "screen-line-before screen-line-after border-edge relative z-10 border-x-[6px] p-4 pt-6 pb-8 font-normal sm:px-6",
+        "screen-line-before bg-background screen-line-after border-edge relative z-10 border-x-[6px] p-4 pt-6 pb-8 font-normal sm:px-6",
         className
       )}>
       {children}

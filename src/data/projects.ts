@@ -47,36 +47,33 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    slug: "evanstore",
-    title: "EvanStore Groccery",
-    description:
-      "EvanStore is a e-commerce platform for grocery shopping. It is a full-stack application built with React, Node.js, and MongoDB.",
+    slug: "minimal-portfolio",
+    title: "Minimal Portfolio",
+    description: "Minimal Portfolio is a personal portfolio website for Akkal Dhami.",
     technologies: [
       { name: "React" },
       { name: "Nodejs" },
       { name: "MongoDB" },
       { name: "Tailwind" }
     ],
-    thumbnail: "/images/hero.png",
+    thumbnail: "/images/portfolio.png",
     images: [
+      "/images/portfolio.png",
       "/images/hero.png",
+      "/images/portfolio.png",
       "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png",
-      "/images/hero.png"
+      "/images/portfolio.png"
     ],
-    liveUrl: "https://evanstore.onrender.com/",
-    githubUrl: "https://github.com/AkkalDhami/EVANSTORE-GROCCERY",
+    liveUrl: "https://akkal.vercel.app/",
+    githubUrl: "https://github.com/akkaldhami/personal-portfolio",
     features: [
-      "Real-time analytics",
-      "Inventory management",
-      "Sales tracking",
-      "Customer insights",
-      "User authentication",
-      "Order management",
-      "Product management",
-      "Payment processing",
-      "Shipping integration"
+      "Personal Portfolio",
+      "Project Showcase",
+      "Contact Form",
+      "Social Media Links",
+      "Responsive Design",
+      "Dark Mode",
+      "Light Mode"
     ]
   }
 ];
