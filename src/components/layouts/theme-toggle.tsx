@@ -1,73 +1,117 @@
 "use client";
 
+import * as React from "react";
+
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "motion/react";
+
+import { Button } from "@/components/ui/8bit/button";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/8bit/button";
 
-export function ThemeToggle() {
-  const { systemTheme, theme, setTheme } = useTheme();
+interface ThemeToggleProps {
+  className?: string;
+}
 
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  const isDark = currentTheme === "dark";
+export function ThemeToggle({ className }: ThemeToggleProps) {
+  const { setTheme, resolvedTheme } = useTheme();
 
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
+  const toggleTheme = React.useCallback(() => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  }, [resolvedTheme, setTheme]);
 
   return (
     <Button
-      onClick={toggleTheme}
-      variant={"outline"}
-      className={cn("size-9 px-2 py-1.5 transition-colors duration-300")}
-      aria-label="Toggle theme">
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={isDark ? "dark" : "light"}
-          initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
-          animate={{ opacity: 1, rotate: 0, scale: 1 }}
-          exit={{ opacity: 0, rotate: 45, scale: 0.8 }}
-          transition={{ duration: 0.2, ease: "circOut" }}
-          className="flex items-center justify-center">
-          {!isDark ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-              <motion.path
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                d="M12 3a6 6 0 0 0 9 9"
-                className="opacity-40"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="icon icon-tabler icons-tabler-outline icon-tabler-sun">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-              <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-            </svg>
-          )}
-        </motion.div>
-      </AnimatePresence>
+      variant="outline"
+      className="group/toggle px-0"
+      onClick={toggleTheme}>
+      <svg
+        width="50"
+        height="50"
+        viewBox="0 0 256 256"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        strokeWidth="0.25"
+        className={cn("hidden size-8 [html.dark_&]:block", className)}
+        aria-label="sun-dim">
+        <rect x="120" y="88" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="88" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="104" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="136" y="88" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="136" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="152" y="104" width="14" height="14" rx="1"></rect>
+        <rect x="168" y="72" width="14" height="14" rx="1"></rect>
+        <rect x="168" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="72" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="56" width="14" height="14" rx="1"></rect>
+        <rect x="56" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="184" width="14" height="14" rx="1"></rect>
+        <rect x="184" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="40" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="40" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="200" width="14" height="14" rx="1"></rect>
+        <rect x="184" y="184" width="14" height="14" rx="1"></rect>
+        <rect x="56" y="184" width="14" height="14" rx="1"></rect>
+        <rect x="184" y="56" width="14" height="14" rx="1"></rect>
+        <rect x="56" y="56" width="14" height="14" rx="1"></rect>
+        <rect x="200" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="152" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="152" y="136" width="14" height="14" rx="1"></rect>
+      </svg>
+      <svg
+        width="50"
+        height="50"
+        viewBox="0 0 256 256"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        strokeWidth="0.25"
+        className={cn("hidden size-8 [html.light_&]:block", className)}
+        aria-label="moon">
+        <rect x="104" y="56" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="56" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="72" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="72" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="88" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="88" width="14" height="14" rx="1"></rect>
+        <rect x="56" y="104" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="104" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="104" width="14" height="14" rx="1"></rect>
+        <rect x="56" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="56" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="120" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="56" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="168" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="184" y="136" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="152" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="136" y="152" width="14" height="14" rx="1"></rect>
+        <rect x="72" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="88" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="168" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="152" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="136" y="168" width="14" height="14" rx="1"></rect>
+        <rect x="104" y="184" width="14" height="14" rx="1"></rect>
+        <rect x="120" y="184" width="14" height="14" rx="1"></rect>
+        <rect x="136" y="184" width="14" height="14" rx="1"></rect>
+        <rect x="184" y="152" width="14" height="14" rx="1"></rect>
+      </svg>
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 }

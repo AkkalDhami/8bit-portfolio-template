@@ -14,6 +14,7 @@ import { GITHUB_URL, NAME } from "@/lib/constants";
 import { Button } from "../ui/8bit/button";
 import { isActiveLink } from "@/utils/link";
 import { cn } from "@/lib/utils";
+import { SearchCommand } from "../home/search-command";
 
 interface MenuItem {
   label: string;
@@ -38,10 +39,22 @@ export function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+      const down = (e: KeyboardEvent) => {
+        if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+          e.preventDefault();
+          setOpen(open => !open);
+        }
+      };
+
+      document.addEventListener("keydown", down);
+      return () => document.removeEventListener("keydown", down);
+    }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,58 +88,69 @@ export function Navbar() {
         )}>
         <Profile />
 
-        {/* Desktop Navigation */}
-        <div className="border-border/60 hidden items-center gap-1 border p-1 backdrop-blur-md md:flex">
-          {menuItems.map((item, index) => {
-            const isActive = isActiveLink(pathname, item.href);
-            const isMoving =
-              (hoveredIndex ?? (isActive ? index : -1)) === index;
-
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={cn(
-                  "relative cursor-pointer px-4 py-1.5 text-xs font-medium tracking-widest uppercase transition-all duration-300",
-                  isMoving
-                    ? "text-primary"
-                    : "text-muted-primary hover:text-primary"
-                )}>
-                <span className="relative z-10">{item.label}</span>
-                {isMoving && (
-                  <motion.div
-                    layoutId="nav-active"
-                    className="bg-muted group absolute inset-0 border-[1.5px] border-neutral-500/40"
-                    transition={{
-                      type: "spring",
-                      bounce: 0.25,
-                      duration: 0.5
-                    }}></motion.div>
-                )}
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Desktop Controls */}
         <div className="flex items-center gap-3">
-          <Button variant="default" asChild>
-            <Link
-              href={`${GITHUB_URL}/8bit-portfolio-template`}
-              target="_blank"
-              className="hidden transition-colors sm:block">
-              <SiGithub className="size-5" />
-            </Link>
-          </Button>
-          <ThemeToggle />
-          <Button
-            variant="secondary"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="relative px-2 py-1.5 transition-colors md:hidden">
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </Button>
+          <div className="border-border/60 hidden items-center gap-1 border p-1 backdrop-blur-md md:flex">
+            {menuItems.map((item, index) => {
+              const isActive = isActiveLink(pathname, item.href);
+              const isMoving =
+                (hoveredIndex ?? (isActive ? index : -1)) === index;
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className={cn(
+                    "relative cursor-pointer px-4 py-1.5 text-xs font-medium tracking-widest uppercase transition-all duration-300",
+                    isMoving
+                      ? "text-primary"
+                      : "text-muted-primary hover:text-primary"
+                  )}>
+                  <span className="relative z-10">{item.label}</span>
+                  {isMoving && (
+                    <motion.div
+                      layoutId="nav-active"
+                      className="bg-muted group absolute inset-0 border-[1.5px] border-neutral-500/40"
+                      transition={{
+                        type: "spring",
+                        bounce: 0.25,
+                        duration: 0.5
+                      }}></motion.div>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Button
+              className={cn(
+                "bg-muted/50 text-muted-foreground relative w-12 justify-center flex items-center text-[7.5px] font-normal shadow-none"
+              )}
+              onClick={() => setOpen(true)}
+              variant="outline">
+              <kbd className="bg-muted pointer-events-none absolute top-[0.6rem] right-[0.3rem] hidden items-center gap-1 border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
+                <span className="text-xs">⌘</span>K
+              </kbd>
+            </Button>
+            <SearchCommand open={open} setOpen={setOpen} />
+            <Button variant="outline" asChild>
+              <Link
+                href={`${GITHUB_URL}/8bit-portfolio-template`}
+                target="_blank"
+                className="hidden transition-colors sm:block">
+                <SiGithub className="size-5" />
+              </Link>
+            </Button>
+            <ThemeToggle />
+            <Button
+              variant="secondary"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="relative px-2 py-1.5 transition-colors md:hidden">
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </Button>
+          </div>
         </div>
       </motion.nav>
 
