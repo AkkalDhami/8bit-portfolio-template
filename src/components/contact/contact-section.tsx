@@ -6,7 +6,6 @@ import { SubHeading } from "@/components/ui/sub-heading";
 import { ContactForm } from "./contact-form";
 import { ContactInfo } from "./contact-info";
 
-import { ContactCta } from "./contact-cta";
 import Section from "../ui/section";
 
 export function ContactSection() {
@@ -26,7 +25,6 @@ export function ContactSection() {
       </motion.div>
 
       <div className="space-y-12">
-        <ContactCta />
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
