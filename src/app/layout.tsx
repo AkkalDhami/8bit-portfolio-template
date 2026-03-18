@@ -8,6 +8,7 @@ import { Footer } from "@/components/layouts/footer";
 import { Toaster } from "@/components/ui/sonner";
 import siteConfig from "@/lib/site";
 import { X_USERNAME } from "@/lib/constants";
+import { BgPattern } from "@/components/layouts/bg-pattern";
 
 const geistSans = Press_Start_2P({
   weight: ["400"]
@@ -87,7 +88,7 @@ export default function RootLayout({
             <BackToTop />
           </main>
           <Footer />
-          {/* <BgPattern /> */}
+          <BgPattern />
           <Toaster />
         </ThemeProvider>
       </body>

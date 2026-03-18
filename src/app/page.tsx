@@ -7,7 +7,7 @@ import { Gap } from "@/components/home/gap";
 
 export default async function Page() {
   return (
-    <div className="relative mx-auto max-w-5xl *:[[id]]:scroll-mt-22">
+    <div className="relative  mx-auto max-w-5xl *:[[id]]:scroll-mt-22">
       <HeroSection />
       <Gap />
       <ProjectsSection />
