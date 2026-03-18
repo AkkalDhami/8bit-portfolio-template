@@ -30,7 +30,7 @@ function Command({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive>) {
   return (
-    <div className={cn("relative !p-0", className)}>
+    <div className={cn("relative p-0!", className)}>
       <ShadcnCommand
         data-slot="command"
         className={cn(
